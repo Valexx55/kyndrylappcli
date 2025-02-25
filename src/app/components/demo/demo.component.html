@@ -1,1 +1,15 @@
 <p>demo works!</p>
+ALUMNO <br>
+ID {{ alumno.id }} <br> 
+NOMBRE {{ alumno.nombre }} <br> 
+APELLIDO {{ alumno.apellido }} <br>
+EDAD {{ alumno.edad }}  <br>
+
+<button [class]="estiloBotonPrimario()" (click)="sumarEdad()" >SUMAR EDAD</button>
+<button class="btn btn-success" (click)="iniciarEdad()" >PONER A CERO</button>
+
+<div class="form-group">
+    <label for="nombre">NUEVO NOMBRE</label>
+    <input type="text" name="nombre" [(ngModel)]="alumno.nombre"  class="form-control" id="nombre">
+
+</div>
