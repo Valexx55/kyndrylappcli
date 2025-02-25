@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',//etiqueta padre
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',//conteido estructura
   styleUrl: './app.component.css'//estilo formato
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   //funcionalidad - dinámica "JavaScritp"
-  title:string = 'kyndrylappcli';
+  title:string = 'Kyndryl App';
+
+  constructor ()
+ {
+  console.log("En el constructor AppComponent");
+ } 
+  ngOnInit(): void {
+    console.log("En OnInit");;
+  }
 }
