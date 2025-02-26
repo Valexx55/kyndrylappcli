@@ -19,6 +19,7 @@ export class AlumnoService {
    */
   
 
+  //http://localhost:4200/listadoAlumnos
   //dispongo de un objeto HttpClient por inyección de depdencias,
   //declarando el atributo en la cabecera del constructor
   //Autowired en Spring
@@ -29,6 +30,7 @@ export class AlumnoService {
   //automáticamente, pasade JSON a objecto de JavaScript
   listadoAlumnos():Observable<Array<Alumno>> //recuperamos los alumnos del servidor
  {
-    return this.httpClient.get<Array<Alumno>>("http://localhost:9090/api/alumnos")
+        return this.httpClient.get<Array<Alumno>>("http://localhost:22222/alumno");
+        
  } 
 }

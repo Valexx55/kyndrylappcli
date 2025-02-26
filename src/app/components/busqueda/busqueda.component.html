@@ -1,1 +1,10 @@
-<p>busqueda works!</p>
+<p>Búsqueda de alumnos por rango de edad</p>
+
+<div class="form-group">
+    <label for="edadmin">Edad min</label>
+    <input type="number" name="edadmin" [(ngModel)]="edadMin"  class="form-control" id="edadmin">
+    <label for="edadmax">Edad min</label>
+    <input type="number" name="edadmax" [(ngModel)]="edadMax"  class="form-control" id="edadmax">
+    <br>
+    <button class="btn btn-success" (click)="consultarAlumnosRango()" >BUSCAR</button>
+</div>
