@@ -8,3 +8,29 @@
     <br>
     <button class="btn btn-success" (click)="consultarAlumnosRango()" >BUSCAR</button>
 </div>
+@if (listaAlumnos && listaAlumnos.length>0){
+    <table>
+        <thead>
+            <th (click)="ordenarPorId()">ID</th>
+            <th (click)="ordenarPorNombre()">Nombre</th>
+            <th (click)="ordenarPorEdad()">Edad</th>
+                
+        </thead>
+        <tbody>
+            
+            @for (alumno of listaAlumnos; track alumno.id){
+                <tr>
+                    <td>{{alumno.id}}</td>
+                    <td>{{alumno.nombre}}</td>
+                    <td>{{alumno.edad}}</td>
+                </tr>
+           }  
+        </tbody>
+    </table>
+}@else if (listaAlumnos && listaAlumnos.length==0){
+    <p>La consulta no produjo ningún resultado </p>
+}  
+
+
+
+

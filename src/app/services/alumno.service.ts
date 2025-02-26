@@ -30,7 +30,13 @@ export class AlumnoService {
   //automáticamente, pasade JSON a objecto de JavaScript
   listadoAlumnos():Observable<Array<Alumno>> //recuperamos los alumnos del servidor
  {
-        return this.httpClient.get<Array<Alumno>>("http://localhost:22222/alumno");
+        return this.httpClient.get<Array<Alumno>>("http://localhost:9090/api/alumnos");
         
  } 
+
+ rangoAlumnosEdad(edadmin:number, edadmax:number):Observable<Array<Alumno>> //recuperamos los alumnos del servidor
+ {
+        return this.httpClient.get<Array<Alumno>>("http://localhost:9090/api/alumnos/consultar-alumnos-rango-edad?edadmin="+edadmin+"&edadmax="+edadmax);
+        
+ }
 }
