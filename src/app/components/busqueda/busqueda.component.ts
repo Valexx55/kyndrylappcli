@@ -51,20 +51,38 @@ export class BusquedaComponent {
  ordenarPorId()
 {
  console.log("ordenar por id");
- this.listaAlumnos.sort
+ this.listaAlumnos.sort((alumno1, alumno2)=> 
+ { 
+  return alumno1.id-alumno2.id;
+
+ })
 } 
 
 
 ordenarPorNombre()
 {
   console.log("ordenar por nombre");
+  this.listaAlumnos.sort((alumno1, alumno2)=> 
+    { 
+      let valorDevuelto = 0;
+      if (alumno1.nombre > alumno2.nombre) 
+        valorDevuelto = 1;
+      else if (alumno1.nombre < alumno2.nombre) 
+               valorDevuelto = -1
+     return valorDevuelto;
+   
+    })
 } 
 
 
 ordenarPorEdad()
 {
- 
   console.log("ordenar por edad");
+  this.listaAlumnos.sort((alumno1, alumno2)=> 
+    { 
+     return alumno1.edad-alumno2.edad;
+   
+    })
 } 
 
 
