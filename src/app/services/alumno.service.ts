@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Alumno } from '../model/alumno';
 import { Observable } from 'rxjs';
@@ -39,4 +39,11 @@ export class AlumnoService {
         return this.httpClient.get<Array<Alumno>>("http://localhost:9090/api/alumnos/consultar-alumnos-rango-edad?edadmin="+edadmin+"&edadmax="+edadmax);
         
  }
+
+ rangoAlumnosEdadAccesoACabeceras(edadmin:number, edadmax:number):Observable<HttpResponse<Array<Alumno>>> //recuperamos los alumnos del servidor
+ {
+        return this.httpClient.get<Array<Alumno>>("http://localhost:9090/api/alumnos/consultar-alumnos-rango-edad?edadmin="+edadmin+"&edadmax="+edadmax,{observe:'response'} );
+        
+ }
 }
+
