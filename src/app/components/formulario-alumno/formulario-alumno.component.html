@@ -3,22 +3,33 @@
 <form #formularioAlumno="ngForm" (ngSubmit)="crearAlumno()"  >
     <div class="form-group">
       <label for="nombre">NOMBRE</label>
-      <input type="text" #nombre="ngModel" name="nombre"  class="form-control" id="nombre" placeholder="Intro nombre">
-
+      <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="alumno.nombre"  class="form-control" id="nombre" placeholder="Intro nombre" required pattern=".{3,20}">
+       <div class="alert alert-danger" [hidden]="nombre.valid||nombre.pristine"  >
+            El nombre debe tener entre 3 y 20 carateres
+       </div> 
     </div>
     <div class="form-group">
       <label for="apellidos">APELLIDOS</label>
-      <input type="text" #apellido="ngModel" name="apellidos" class="form-control" id="apellidos" placeholder="Intro nombre">
+      <input type="text" #apellidos="ngModel" name="apellidos" [(ngModel)]="alumno.apellido" class="form-control" id="apellidos" placeholder="Intro apellido" required>
+      <div class="alert alert-danger" [hidden]="apellidos.valid||apellidos.pristine" >
+       Apellido obligatorio
+   </div> 
     </div>
     <div class="form-group">
         <label for="edad">EDAD</label>
-        <input type="number" #edad="ngModel" name="edad"  class="form-control" id="edad" placeholder="Intro edad">
-        
+        <input type="number" #edad="ngModel" name="edad" [(ngModel)]="alumno.edad" class="form-control" id="edad" placeholder="Intro edad" required min="10" max="120">
+        <div class="alert alert-danger" [hidden]="edad.valid||edad.pristine">
+            La edad debe estar entre 10 y 120
+       </div> 
+
       </div>
       <div class="form-group">
         <label for="correo">EMAIL</label>
-        <input type="email" #correo="ngModel" name="correo"  class="form-control" id="correo" placeholder="Intro email">
+        <input type="email" #correo="ngModel" name="correo"  [(ngModel)]="alumno.email" class="form-control" id="correo" placeholder="Intro email" required email>
+        <div class="alert alert-danger" [hidden]="correo.valid||correo.pristine">
+            Introduzca un email correcto
+       </div> 
       </div>
       <br>
-     <button type="submit" class="btn btn-primary">CREAR</button>
+     <button type="submit" class="btn btn-primary" [disabled]="!formularioAlumno.valid" >CREAR</button>
   </form>

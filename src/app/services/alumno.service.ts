@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Alumno } from '../model/alumno';
 import { Observable } from 'rxjs';
@@ -18,6 +18,7 @@ export class AlumnoService {
    * 
    */
   
+  cabeceras:HttpHeaders = new HttpHeaders({'content-type':'application/json'})
 
   //http://localhost:4200/listadoAlumnos
   //dispongo de un objeto HttpClient por inyección de depdencias,
@@ -52,6 +53,13 @@ export class AlumnoService {
         return this.httpClient.delete<void>("http://localhost:9090/api/alumnos/"+id);
         
  } 
+
+   //automáticamente, pasade JSON a objecto de JavaScript
+   insertarAlumno(alumno:Alumno):Observable<Alumno> //recuperamos los alumnos del servidor
+   {
+          return this.httpClient.post<Alumno>("http://localhost:9090/api/alumnos", alumno,{headers:this.cabeceras} );
+          
+   } 
 
 
 }
