@@ -45,5 +45,14 @@ export class AlumnoService {
         return this.httpClient.get<Array<Alumno>>("http://localhost:9090/api/alumnos/consultar-alumnos-rango-edad?edadmin="+edadmin+"&edadmax="+edadmax,{observe:'response'} );
         
  }
+
+
+ borrarAlumno(id:number):Observable<void> //recuperamos los alumnos del servidor
+ {
+        return this.httpClient.delete<void>("http://localhost:9090/api/alumnos/"+id);
+        
+ } 
+
+
 }
 

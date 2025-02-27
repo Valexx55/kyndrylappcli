@@ -14,6 +14,7 @@ export class ListadoAlumnosComponent implements OnInit {
 
   listaAlumnos: Array<Alumno>;
 
+  //TODO: incluir el consumo de DELETE, POST, PUT
   observerListaAlumnos: Observer<Array<Alumno>>
 
   constructor(private alumnoService: AlumnoService) {
@@ -53,5 +54,39 @@ export class ListadoAlumnosComponent implements OnInit {
     )*/
   }
 
+  editarAlumno(idAlumno:number)
+ {
+  console.log("en editarAlumno " + idAlumno);
+ } 
+
+ borrarAlumno(idAlumno:number)
+{
+  console.log("en borrarAlumno " + idAlumno);
+  this.alumnoService.borrarAlumno(idAlumno).subscribe(
+   {
+    complete: () => { console.log('Comunicación terminada'); },
+      next: () => {
+        console.log('Registro borrado OK'); 
+        //TODO: borrar alumno de la lista
+        this.listaAlumnos = this.listaAlumnos.filter((alumno)=>{
+          let sequeda:boolean = false;
+
+            if (alumno.id!=idAlumno)
+            {
+              sequeda = true;
+            } 
+
+          return sequeda;
+        } )
+
+
+      },
+      error: (error: any) => {
+        console.error('Ha habido un error en la comunicación ' + error);
+        window.alert("Error obteniendo el listado")
+      }
+   } 
+  )
+} 
 
 }
