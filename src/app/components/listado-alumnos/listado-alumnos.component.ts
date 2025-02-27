@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Alumno } from '../../model/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { Observer } from 'rxjs';
-import { NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-listado-alumnos',
-  imports: [NgFor, NgIf], //necesario importar explícitamente estas directivas
+  imports: [NgFor, NgIf, UpperCasePipe, DatePipe], //necesario importar explícitamente estas directivas
   templateUrl: './listado-alumnos.component.html',
   styleUrl: './listado-alumnos.component.css'
 })
