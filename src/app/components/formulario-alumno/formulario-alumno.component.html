@@ -1,0 +1,24 @@
+<p>ALTA NUEVO ALUMNO</p>
+
+<form #formularioAlumno="ngForm" (ngSubmit)="crearAlumno()"  >
+    <div class="form-group">
+      <label for="nombre">NOMBRE</label>
+      <input type="text" #nombre="ngModel" name="nombre"  class="form-control" id="nombre" placeholder="Intro nombre">
+
+    </div>
+    <div class="form-group">
+      <label for="apellidos">APELLIDOS</label>
+      <input type="text" #apellido="ngModel" name="apellidos" class="form-control" id="apellidos" placeholder="Intro nombre">
+    </div>
+    <div class="form-group">
+        <label for="edad">EDAD</label>
+        <input type="number" #edad="ngModel" name="edad"  class="form-control" id="edad" placeholder="Intro edad">
+        
+      </div>
+      <div class="form-group">
+        <label for="correo">EMAIL</label>
+        <input type="email" #correo="ngModel" name="correo"  class="form-control" id="correo" placeholder="Intro email">
+      </div>
+      <br>
+     <button type="submit" class="btn btn-primary">CREAR</button>
+  </form>

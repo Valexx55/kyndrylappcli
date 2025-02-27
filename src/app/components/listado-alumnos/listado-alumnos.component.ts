@@ -3,10 +3,11 @@ import { Alumno } from '../../model/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { Observer } from 'rxjs';
 import { DatePipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listado-alumnos',
-  imports: [NgFor, NgIf, UpperCasePipe, DatePipe], //necesario importar explícitamente estas directivas
+  imports: [NgFor, NgIf, UpperCasePipe, DatePipe, RouterLink], //necesario importar explícitamente estas directivas
   templateUrl: './listado-alumnos.component.html',
   styleUrl: './listado-alumnos.component.css'
 })
@@ -16,6 +17,8 @@ export class ListadoAlumnosComponent implements OnInit {
 
   //TODO: incluir el consumo de DELETE, POST, PUT
   observerListaAlumnos: Observer<Array<Alumno>>
+
+  //inject(AlumnoService)
 
   constructor(private alumnoService: AlumnoService) {
     this.listaAlumnos = new Array<Alumno>();
