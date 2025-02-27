@@ -3,6 +3,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { Alumno } from '../../model/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { error } from 'console';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-alumno',
@@ -17,6 +18,7 @@ export class FormularioAlumnoComponent {
 
   //forma alternativa al constructor moderna de inyectar dependencias
   alumnoService:AlumnoService =inject(AlumnoService);
+  router:Router =inject(Router);
 
   constructor()
  {
@@ -31,6 +33,9 @@ export class FormularioAlumnoComponent {
       error: (error) => console.error(error) , 
       next: (alumno) =>{
         alert("Alumno Insertado Correctamente");
+        //Navegar programáticamente al componente listado
+        this.router.navigateByUrl('/listadoAlumnos');
+        //TODO: put
       } 
      } 
     )
