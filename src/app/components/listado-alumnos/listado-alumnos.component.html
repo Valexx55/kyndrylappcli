@@ -1,3 +1,4 @@
+<!--<fa-icon [icon]="faCoffee"></fa-icon>-->
 <p>LISTADO DE ALUMNOS</p>
 
 <!--forma nueva-->
@@ -27,8 +28,8 @@
             <div class="card-footer text-muted">
                 <p>{{alumno.creadoEn | date:'medium' }} </p>
             </div>
-            <button (click)="editarAlumno(alumno)" class="btn btn-success" >EDITAR</button>
-            <button (click)="borrarAlumno(alumno.id)" class="btn btn-danger">BORRAR</button>
+            <button (click)="editarAlumno(alumno)" class="btn btn-success" >EDITAR <fa-icon [icon]="faPenFancy"></fa-icon></button>
+            <button (click)="borrarAlumno(alumno.id)" class="btn btn-danger">BORRAR <fa-icon [icon]="faTrash"></fa-icon></button>
           </div>
       } 
         

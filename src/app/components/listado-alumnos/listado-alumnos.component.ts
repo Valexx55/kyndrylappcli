@@ -4,10 +4,12 @@ import { AlumnoService } from '../../services/alumno.service';
 import { Observer } from 'rxjs';
 import { DatePipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faCoffee, faPenFancy, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-listado-alumnos',
-  imports: [NgFor, NgIf, UpperCasePipe, DatePipe, RouterLink], //necesario importar explícitamente estas directivas
+  imports: [FontAwesomeModule, FaIconComponent, NgFor, NgIf, UpperCasePipe, DatePipe, RouterLink], //necesario importar explícitamente estas directivas
   templateUrl: './listado-alumnos.component.html',
   styleUrl: './listado-alumnos.component.css'
 })
@@ -15,6 +17,14 @@ export class ListadoAlumnosComponent implements OnInit {
 
   listaAlumnos: Array<Alumno>;
 
+  //icono café prueba
+  faCoffee=faCoffee;
+
+  faPenFancy= faPenFancy;
+  faTrash= faTrash;
+  
+
+  
   //TODO: incluir el consumo de DELETE, POST, PUT
   observerListaAlumnos: Observer<Array<Alumno>>
 
