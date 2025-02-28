@@ -79,5 +79,18 @@ export class AlumnoService {
           
    } 
 
+   crearAlumnoConFoto(alumno: Alumno, archivo: File): Observable<Alumno> {
+       let formData = new FormData();//el cuerpo de la peticion multipart FILE
+   
+         formData.append('archivo', archivo);
+         formData.append('nombre', alumno.nombre);
+         formData.append('apellido', alumno.apellido);
+         formData.append('edad', alumno.edad + "");
+         formData.append('email', alumno.email);
+   
+   
+       return this.httpClient.post<Alumno>("http://localhost:9090/api/alumnos/crear-con-foto", formData);
+     }
+
 }
 

@@ -23,6 +23,7 @@ export class FormularioAlumnoComponent implements OnInit {
   ruta:ActivatedRoute = inject(ActivatedRoute)
   @Input() idAlumno!:string;
   en_edicion:boolean = false;
+  fotoSeleccionada: File|null=null; 
 
   constructor()
  {
@@ -57,18 +58,40 @@ export class FormularioAlumnoComponent implements OnInit {
 
   crearAlumno(){
     console.log("Enviar alumno al POST");
+
+    if (this.fotoSeleccionada!=null)
+    {
+      this.alumnoService.crearAlumnoConFoto (this.alumno, this.fotoSeleccionada).subscribe(
+        {
+         complete: () => console.log("comunicación completada"), 
+         error: (error) => console.error(error) , 
+         next: (alumno) =>{
+           alert("Alumno Insertado Correctamente");
+           //Navegar programáticamente al componente listado
+           this.router.navigateByUrl('/listadoAlumnos');
+           
+         } 
+        } 
+       )
+
+    }  else  //sin foto
+   {
     this.alumnoService.insertarAlumno(this.alumno).subscribe(
-     {
-      complete: () => console.log("comunicación completada"), 
-      error: (error) => console.error(error) , 
-      next: (alumno) =>{
-        alert("Alumno Insertado Correctamente");
-        //Navegar programáticamente al componente listado
-        this.router.navigateByUrl('/listadoAlumnos');
-        
+      {
+       complete: () => console.log("comunicación completada"), 
+       error: (error) => console.error(error) , 
+       next: (alumno) =>{
+         alert("Alumno Insertado Correctamente");
+         //Navegar programáticamente al componente listado
+         this.router.navigateByUrl('/listadoAlumnos');
+         
+       } 
       } 
-     } 
-    )
+     )
+
+   } 
+
+    
   }
   
   editarAlumno ()
@@ -104,4 +127,20 @@ export class FormularioAlumnoComponent implements OnInit {
 
   return estilo;
 } 
+
+seleccionarFoto (event:any)
+  {
+    console.log("foto seleccionada");
+    this.fotoSeleccionada = event.target.files[0];
+    if (this.fotoSeleccionada!=null)
+    {
+      console.log("TIPO = " +this.fotoSeleccionada.type);
+      if (this.fotoSeleccionada.type.indexOf('image')<0)
+      {
+        alert("El archivo debe ser una imagen");
+        this.fotoSeleccionada = null;
+      }
+    }
+    
+  }
 }

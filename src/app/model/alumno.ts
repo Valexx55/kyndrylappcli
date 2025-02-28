@@ -6,6 +6,7 @@ export class Alumno {
     email:string;
     creadoEn:string;
     edad: number;
+    fotoHashCode:string;
 
     constructor ()
    {
@@ -15,6 +16,7 @@ export class Alumno {
     this.email = '';
     this.creadoEn = '';
     this.edad = 0;
+    this.fotoHashCode = '';
 
    } 
 

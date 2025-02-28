@@ -34,6 +34,10 @@
             Introduzca un email correcto
        </div> 
       </div>
+      <div class="form-group">
+        <label for="foto">Foto</label>
+        <input class="form-control" type="file" id="foto" (change)="seleccionarFoto($event)" name="foto" >
+      </div>
       <br>
      <button type="submit" [class] ="estiloBoton()" [disabled]="!formularioAlumno.valid">{{(en_edicion) ? 'ACTUALIZAR' : 'CREAR'}}</button>
   </form>

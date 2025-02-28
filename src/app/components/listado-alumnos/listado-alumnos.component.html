@@ -12,11 +12,17 @@
             <!--si el id del alumno es par
             que salga la foto de una mujer 
             si es impar la de un hombre-->
+            @if (alumno.fotoHashCode!=null){
+                <img class="card-img-top" src="http://localhost:9090/api/alumnos/obtener-foto/{{alumno.id}}"  alt="Card image cap">
+            }
+          @else{
             @if (alumno.id%2==0){
                 <img class="card-img-top" src="https://randomuser.me/api/portraits/women/{{alumno.id}}.jpg"  alt="Card image cap">
             }@else{
                 <img class="card-img-top" src="https://randomuser.me/api/portraits/men/{{alumno.id}}.jpg"  alt="Card image cap">
             }  
+          }   
+            
            <!-- <img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
               <h5 class="card-title">{{alumno.id}} {{alumno.nombre | uppercase  }}</h5>
