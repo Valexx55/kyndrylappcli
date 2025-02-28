@@ -20,6 +20,8 @@ export class AlumnoService {
   
   cabeceras:HttpHeaders = new HttpHeaders({'content-type':'application/json'})
 
+  alumnoEnEdicion!:Alumno;
+
   //http://localhost:4200/listadoAlumnos
   //dispongo de un objeto HttpClient por inyección de depdencias,
   //declarando el atributo en la cabecera del constructor
@@ -27,6 +29,16 @@ export class AlumnoService {
   constructor(private httpClient : HttpClient) { 
     
   }
+
+  setAlumnoEnEdicion (alumno:Alumno)
+  {
+       this.alumnoEnEdicion = alumno;
+  } 
+
+  getAlumnoEnEdicion ():Alumno
+  {
+       return this.alumnoEnEdicion;
+  } 
 
   //automáticamente, pasade JSON a objecto de JavaScript
   listadoAlumnos():Observable<Array<Alumno>> //recuperamos los alumnos del servidor
@@ -61,6 +73,11 @@ export class AlumnoService {
           
    } 
 
+   actualizarAlumno(alumno:Alumno, id:number):Observable<Alumno> //recuperamos los alumnos del servidor
+   {
+          return this.httpClient.put <Alumno>("http://localhost:9090/api/alumnos/"+id, alumno,{headers:this.cabeceras});
+          
+   } 
 
 }
 

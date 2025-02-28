@@ -1,6 +1,10 @@
-<p>ALTA NUEVO ALUMNO</p>
+@if (!en_edicion){
+    <p>ALTA NUEVO ALUMNO</p>
+}@else{
+    <p>EDICIÓN ALUMNO</p>
+}  
 
-<form #formularioAlumno="ngForm" (ngSubmit)="crearAlumno()"  >
+<form #formularioAlumno="ngForm" (ngSubmit)="en_edicion ? editarAlumno() : crearAlumno()"  >
     <div class="form-group">
       <label for="nombre">NOMBRE</label>
       <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="alumno.nombre"  class="form-control" id="nombre" placeholder="Intro nombre" required pattern=".{3,20}">
@@ -31,5 +35,5 @@
        </div> 
       </div>
       <br>
-     <button type="submit" class="btn btn-primary" [disabled]="!formularioAlumno.valid" >CREAR</button>
+     <button type="submit" [class] ="estiloBoton()" [disabled]="!formularioAlumno.valid">{{(en_edicion) ? 'ACTUALIZAR' : 'CREAR'}}</button>
   </form>

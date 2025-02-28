@@ -3,7 +3,7 @@ import { Alumno } from '../../model/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { Observer } from 'rxjs';
 import { DatePipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listado-alumnos',
@@ -20,7 +20,7 @@ export class ListadoAlumnosComponent implements OnInit {
 
   //inject(AlumnoService)
 
-  constructor(private alumnoService: AlumnoService) {
+  constructor(private alumnoService: AlumnoService, private router:Router) {
     this.listaAlumnos = new Array<Alumno>();
     this.observerListaAlumnos = 
     {
@@ -57,9 +57,13 @@ export class ListadoAlumnosComponent implements OnInit {
     )*/
   }
 
-  editarAlumno(idAlumno:number)
+  editarAlumno(alumno:Alumno)
  {
-  console.log("en editarAlumno " + idAlumno);
+  console.log("en editarAlumno " + alumno.id);
+  //this.alumnoService.setAlumnoEnEdicion(alumno);//guardo temporalmente el alumno en edición en el servicio
+  sessionStorage.setItem("alumnoed", JSON.stringify(alumno))
+  this.router.navigate(["/formulario/edit", alumno.id]);
+
  } 
 
  borrarAlumno(idAlumno:number)

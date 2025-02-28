@@ -11,5 +11,7 @@ export const routes: Routes = [
    {path:'demoalumno', component: DemoComponent},
    {path:'listadoAlumnos', component: ListadoAlumnosComponent} ,
    {path:'busquedaAlumno', component: BusquedaComponent},
-  {path:'formulario', component:FormularioAlumnoComponent}   
+  {path:'formulario', component:FormularioAlumnoComponent},
+  {path:'formulario/edit/:idAlumno', component:FormularioAlumnoComponent}
+     
 ];
