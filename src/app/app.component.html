@@ -245,6 +245,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/formulario" routerLinkActive="active" >FORMULARIO ALUMNOS</a>
         </li>
+        <li class="nav-item" *ngIf="estaLogueado()">
+          <a class="nav-link" (click)="logout()" role="button" routerLinkActive="active" >LOGOUT</a>
+        </li>
       </ul>
     </div>
   </div>

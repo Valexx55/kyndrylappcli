@@ -6,6 +6,7 @@ import { DatePipe, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faCoffee, faPenFancy, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-listado-alumnos',
@@ -100,6 +101,12 @@ export class ListadoAlumnosComponent implements OnInit {
       },
       error: (error: any) => {
         console.error('Ha habido un error en la comunicación ' + error);
+        let her = <HttpErrorResponse>error;
+        console.log(` ${her.error}`);
+        console.log(` ${her.message}`);
+        console.log(` ${her.status}`);
+        console.log(` ${her.name}`);
+
         window.alert("Error obteniendo el listado")
       }
    } 
